@@ -1,0 +1,29 @@
+---
+title: "README"
+author: "putsif"
+date: "Thursday, March 19, 2015"
+output: html_document
+---
+
+The run_analysis.R script analyzes accelerometer data collected from Samsung Galaxy 5 smartphones as users engaged in various activities. 
+
+
+The script loads and uses the dplyr package.
+
+The dataset was downloaded from INSERT LINK HERE and unzipped into the working directory. The script assumes that the working directory contains the unzipped data directory "UCI HAR Dataset". 
+
+The collected data was divided into two datasets, a training set and a test set. The "UCI HAR Dataset" has two subdirectories, "test" and "train", each containing: 
+- accelerometer data ("X_test.txt" and "X_train.txt")
+- a file of activity labels for each observation of accelerometer data collected ("y_test.txt" and "y_train.txt"). Each label is an integer from 1 - 6, which identifies one of the six activities the subjects engaged in during testing.
+- a file that identifies which subject was observed for each observation.
+
+The "UCI HAR Dataset" also contains:
+- a README file describing the dataset
+- an "activity_labels.txt" file that gives the descriptive name for each of the six activity labels ("walking", "walking upstairs", "walking downstairs", running" "sitting", and "lying")
+- "features_info.txt" file that describes the variables collected during each observation.
+
+The run_analysis.R script reads the test and train datasets, the activity labels and subject labels in from the subdirectories. It column binds the associated activity labels and subject ids to the test and train datasets. It then row binds the test and train datasets into a single dataset
+
+Once the two sets are bound together, the script converts the numeric activity labels to the descriptive labels.
+
+Next, the script selects only those variables that record mean and standard deviation measurements, groups the data by subject and activity, and then calculates the mean values of each group of data. 
